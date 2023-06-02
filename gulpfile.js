@@ -1,38 +1,32 @@
-const gulp = require("gulp");
 const pug = require("gulp-pug");
-const sass = require("gulp-sass");
-const imagemin = require("gulp-imagemin");
-const uglify = require("gulp-uglify");
-const babel = require("gulp-babel");
+const { src, dest, series, parallel, watch } = require("gulp");
+const sass = require("gulp-sass")(require("sass"));
 const browsersync = require("browser-sync").create();
-const autoprefixer = require("gulp-autoprefixer");
-const cache = require("gulp-cache");
-const del = require("del");
 const plumber = require("gulp-plumber");
+const babel = require("gulp-babel");
+const cleaner = require("gulp-rimraf");
 
-/* Options
- * ------ */
 const options = {
-  pug: {
+  views: {
     src: ["app/views/*.pug", "app/views/!blocks/**", "app/views/!layout/**"],
-    all: "app/views/**/*.pug",
     dest: "public",
-  },
-  scripts: {
-    src: "app/scripts/**/*.js",
-    dest: "public/scripts",
+    all: "app/views/**/*.pug",
   },
   styles: {
     src: "app/styles/**/*.scss",
     dest: "public/styles",
   },
-  images: {
-    src: "app/images/*.+(png|jpeg|jpg|gif|svg)",
-    dest: "public/images",
+  scripts: {
+    src: "app/scripts/**/*.js",
+    dest: "public/scripts",
   },
   fonts: {
-    src: "app/fonts/*",
+    src: "app/fonts/**/*",
     dest: "public/fonts",
+  },
+  images: {
+    src: "app/images/**/*",
+    dest: "public/images",
   },
   browserSync: {
     baseDir: "public",
@@ -51,64 +45,8 @@ function browserSync(done) {
   done();
 }
 
-/* Styles
- * ------ */
-
-function styles() {
-  return gulp
-    .src(options.styles.src)
-    .pipe(
-      plumber(function (err) {
-        console.log("Styles Task Error");
-        console.log(err);
-        this.emit("end");
-      })
-    )
-    .pipe(sass().on("error", sass.logError))
-    .pipe(
-      autoprefixer({
-        browsers: ["last 2 versions"],
-        cascade: false,
-        grid: true,
-      })
-    )
-    .pipe(gulp.dest(options.styles.dest))
-    .pipe(
-      browsersync.reload({
-        stream: true,
-      })
-    );
-}
-
-/* Scripts
- * ------ */
-
-function scripts() {
-  return gulp
-    .src(options.scripts.src)
-    .pipe(
-      plumber(function (err) {
-        console.log("Scripts Task Error");
-        console.log(err);
-        this.emit("end");
-      })
-    )
-    .pipe(babel())
-    .pipe(uglify())
-    .pipe(gulp.dest(options.scripts.dest))
-    .pipe(
-      browsersync.reload({
-        stream: true,
-      })
-    );
-}
-
-/* Views
- * ------ */
-
-function views() {
-  return gulp
-    .src(options.pug.src)
+function renderViews() {
+  return src(options.views.src)
     .pipe(
       plumber(function (err) {
         console.log("Pug Task Error");
@@ -117,66 +55,69 @@ function views() {
       })
     )
     .pipe(pug({ pretty: true }))
-    .pipe(gulp.dest(options.pug.dest))
+    .pipe(dest(options.views.dest))
     .pipe(
       browsersync.reload({
         stream: true,
       })
     );
 }
-
-/* Images
- * ------ */
-
-function images() {
-  return gulp
-    .src(options.images.src)
+function renderStyles() {
+  return src(options.styles.src)
     .pipe(
-      cache(
-        imagemin({
-          interlaced: true,
-        })
-      )
+      plumber(function (err) {
+        console.log("Styles Task Error");
+        console.log(err);
+        this.emit("end");
+      })
     )
-    .pipe(gulp.dest(options.images.dest));
+    .pipe(sass().on("error", sass.logError))
+    .pipe(dest(options.styles.dest))
+    .pipe(
+      browsersync.reload({
+        stream: true,
+      })
+    );
 }
-
-/* Fonts
- * ------ */
-
-function fonts() {
-  return gulp.src(options.fonts.src).pipe(gulp.dest(options.fonts.dest));
+function renderScripts() {
+  return src(options.scripts.src)
+    .pipe(
+      plumber(function (err) {
+        console.log("Scripts Task Error");
+        console.log(err);
+        this.emit("end");
+      })
+    )
+    .pipe(babel())
+    .pipe(dest(options.scripts.dest))
+    .pipe(
+      browsersync.reload({
+        stream: true,
+      })
+    );
 }
-
-/* Clean up
- * ------ */
-
+function renderFonts() {
+  return src(options.fonts.src).pipe(dest(options.fonts.dest));
+}
+function renderImages() {
+  return src(options.images.src).pipe(dest(options.images.dest));
+}
 async function clean() {
-  return Promise.resolve(del.sync("public"));
+  return src("public", { read: false, allowEmpty: true }).pipe(cleaner());
 }
-
 function watchFiles() {
-  gulp.watch(options.pug.all, views);
-  gulp.watch(options.styles.src, styles);
-  gulp.watch(options.scripts.src, scripts);
-  gulp.watch(options.images.src, images);
-  gulp.watch(options.fonts.src, fonts);
+  watch(options.views.all, renderViews);
+  watch(options.styles.src, renderStyles);
+  watch(options.scripts.src, renderScripts);
+  watch(options.fonts.src, renderFonts);
+  watch(options.images.src, renderImages);
 }
-
-/* Build
- * ------ */
-const build = gulp.series(
-  clean,
-  gulp.parallel(styles, views, scripts, images, fonts)
+const watching = parallel(watchFiles, browserSync);
+const build = series(
+  // clean,
+  parallel(renderStyles, renderViews, renderScripts, renderImages, renderFonts)
 );
-const watch = gulp.parallel(watchFiles, browserSync);
-// export tasks
-exports.styles = styles;
-exports.views = views;
-exports.scripts = scripts;
-exports.images = images;
-exports.fonts = fonts;
 exports.clean = clean;
 exports.build = build;
-exports.watch = watch;
+exports.watch = watching;
 exports.default = build;

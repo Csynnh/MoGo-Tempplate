@@ -1,2 +1,4 @@
-- Required NodeJS installed
-- `npm install` then run `npm run dev`
+# Instruction
+
+- `npm install -g gulp gulp-cli`
+- `npm install` -> `npm run dev`
