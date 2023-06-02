@@ -1,0 +1,94 @@
+mixin blockHeader(caption, title, desc) 
+    .block-header
+        h3.block-header-caption= caption
+        h2.block-header-heading= title
+        if desc 
+            p.block-header-desc= desc
+
+mixin blockAbout(image, icon, title) 
+    .about-item 
+        img.about-item-image(src= image, alt="img-about1")
+        .about-item-content
+            i(class= icon).about-item-content-icon
+            span.about-item-content-title= title
+
+mixin blockNumber(count, desc) 
+    .number-item 
+        span.number-item-count= count 
+        span.number-item-desc= desc
+
+mixin blockService(icon, caption, title)
+   .service-item 
+        img.service-item-icon(src= icon, alt="img-service-icon")
+        .service-item-content 
+            h3.service-item-content-caption= caption
+            p.service-item-content-title= title
+                    
+mixin blockWedo(icon = "./images/img-wedo-icon1.png", title = "Photography", text = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa id assumenda ducimus vero? Debitis, voluptate totam? Quia et suscipit molestias alias quo ex libero magni, reiciendis fugit maiores dolores id! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi, assumenda. Error similique sed eligendi quam fugiat ea magnam beatae, illo ut. Accusantium odit optio eum, quisquam omnis molestiae ut ipsa? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus repellendus ratione aperiam id amet doloremque necessitatibus! Vero, molestias odio. Nemo ad corporis tenetur quo molestias! Totam tempore cumque fugiat accusamus!Impedit, quam accusamus iusto libero dolore deleniti consectetur fugit saepe ratione, totam, id aliquam culpa perspiciatis voluptatem. Aut, quas laborum corrupti atque voluptate voluptatibus aliquam veniam cum, ipsa beatae laudantium.", isActive = "")
+     .wedo-item(class= isActive)
+        .wedo-item-header 
+            img(src= icon, alt="wedo-icon").wedo-item-icon
+            h3.wedo-item-title= title 
+            i.fal.fa-angle-down.wedo-item-arrow
+        .wedo-item-content
+            .wedo-item-text= text
+               
+mixin blockTeam(image = "./images/img-team1.png", author=  "Matthew Dix", position = "Graphic design")
+    .team-item
+        .team-wrapper
+            img.team-image(src= image, alt="img-team")
+            ul.team-address 
+                li.team-address-item
+                    a.team-address-item-link(href="https://www.facebook.com/"  target="_blank")
+                        i.fa-brands.fa-facebook-f.team-address-item-link-icon
+                li.team-address-item
+                    a.team-address-item-link(href="https://www.twitter.com/"  target="_blank")
+                        i.fa-brands.fa-twitter.team-address-item-link-icon
+                li.team-address-item
+                    a.team-address-item-link(href="https://www.pinterest.com/"  target="_blank")
+                        i.fa-brands.fa-pinterest-p.team-address-item-link-icon
+                li.team-address-item
+                    a.team-address-item-link(href="https://www.instagram.com/"  target="_blank")
+                        i.fa-brands.fa-instagram.team-address-item-link-icon
+        .team-info  
+            h4.team-info-author= author
+            span.team-info-position= position
+            
+mixin blockPeople(avatar = "./images/img-people1.png", name  = "Matthew Dix", job= "Graphic design", desc = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis voluptas debitis quaerat distinctio. Praesentium architecto magnam eos sit minima eius eum amet enim velit blanditiis aperiam quisquam, doloribus dolor. Ex!")
+    li.people-item 
+        img.people-item-avatar(src= avatar, alt="img-people")
+        .people-item-info 
+            h3.people-item-name= name 
+            span.people-item-job= job 
+            p.people-item-desc= desc
+
+
+mixin blockStory(image = "https://plus.unsplash.com/premium_photo-1684966119315-880f8e6e450f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=300&q=60",  date_num =  15,  date_text = "Jan", heading = "Lorem ipsum dolor sit amet consectetur", desc= "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt nobis, ullam facilis perspiciatis officiis ratione voluptatem, facere dolores odio maxime ut minima nesciunt, earum accusamus. Molestias, odio quidem. Amet, inventore.", views= 542, comments= 7) 
+      .story-item 
+        .story-image
+            img(src= image, alt="img-blog")
+            date.story-date 
+                span.story-date-number= date_num
+                span.story-date-text= date_text
+        .story-content 
+            h3.story-content-heading= heading
+            .story-content-desc
+                p.story-content-text= desc
+            .story-meta
+                .story-meta-item
+                    i.fa-solid.fa-eye.story-meta-icon 
+                    span.story-meta-count= views
+                .story-meta-item
+                    i.fa-solid.fa-comment-dots.story-meta-icon 
+                    span.story-meta-count= comments 
+
+
+mixin blockQuote(src = "./images/img-quote.png", type = false, desc = "Lorem ipsum dolor sit am cumque eaque, accusantium earum deleniti ullam quisquam velit voluptatem aut libero fuga exercitationem nesciunt impedit dolorem saepe.dolor sit am cumque eaque, accusantium earum deleniti ullam quisquam velit voluptatem aut libero fuga exercitationem nesciunt impedit dolorem saepe.",author=  "Jon Doe")
+      .quote-content
+        if type == false
+            img.quote-icon(src= src, alt="img-quote")
+        else
+            img.quote-image(src= src, alt="img-quote")
+        .quote-info 
+            p.quote-info-desc= desc
+            span.quote-info-author= author

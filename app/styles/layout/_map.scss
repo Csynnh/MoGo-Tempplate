@@ -1,0 +1,30 @@
+.map {
+  background: linear-gradient(to bottom, rgba(white, 0.8), rgba(white, 0.8)),
+    url("../../images/img-map.png") no-repeat center / cover;
+  padding: 55px 0;
+  &-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  &-title {
+    color: $primary-color;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 15px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    &::after {
+      content: "";
+      width: 60px;
+      height: 3px;
+      position: absolute;
+      background-color: $primary-color;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}

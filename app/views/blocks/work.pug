@@ -1,0 +1,12 @@
+section.work 
+    .container 
+        +blockHeader('What we do', 'Some of our work', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam molestias totam architecto illum quod, suscipit facere quae quaerat minima quia earum unde dolore! Incidunt eligendi, ratione ipsa distinctio id harum.')
+        .work-container 
+            .work-list 
+                each img in [1,2,3,4,5,6,7]
+                  .work-item 
+                       img.work-item-image(src=`./images/img-work${img}.png`, alt="img-work") 
+                       .work-item-content
+                            img.work-item-content-icon(src="./images/img-work-icon.png", alt="img-work-icon")
+                            span.work-item-content-title Creatively design
+                            span.work-item-content-desc Lorm sequatur neque!

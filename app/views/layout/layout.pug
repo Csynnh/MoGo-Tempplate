@@ -1,0 +1,35 @@
+block mixins
+	include ../blocks/mixins
+block vars
+	-title = 'Site'
+	-bodyClass = ''
+
+doctype html
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		title=title
+		meta(name="description", content="")
+		meta(name="keywords", content="")
+		meta(name="robots", content="index, follow")
+		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1.0")
+		link(rel="icon", href="favicon-16x16.png", type="image/x-icon", sizes="16x16")
+		link(rel="stylesheet", href="styles/reset.css")
+		link(rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css") 
+		link(rel="stylesheet", href="styles/fontawesome.css")
+		link(rel="stylesheet", href="styles/styles.css")
+		link(rel="preconnect", href="https://fonts.googleapis.com")
+		link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+		link(href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300&display=swap", rel="stylesheet")
+		link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css", integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==", crossorigin="anonymous", referrerpolicy="no-referrer")
+		//- link(rel="stylesheet", type="text/css", href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css")
+
+	body(class=bodyClass)
+		.wrapper
+			block header
+				include ../blocks/header
+			block container
+			block footer
+				include ../blocks/footer
+		block layer
+		include ../blocks/scripts

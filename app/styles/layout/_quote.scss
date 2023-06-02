@@ -1,0 +1,119 @@
+.quote {
+  background-color: $gray-color;
+  padding: 65px 0;
+  &-content {
+    outline: none;
+    padding: 0 55px;
+    display: flex;
+  }
+  &-icon {
+    margin-right: 60px;
+    width: 150px;
+    height: 150px;
+    padding: 40px;
+    border: 3px solid $third-color;
+  }
+  &-image {
+    width: 210px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 100rem;
+    margin-right: 25px;
+  }
+  &-image ~ &-info {
+    margin-top: 35px;
+  }
+  &-info {
+    font-size: 24px;
+    &-desc {
+      display: block;
+      font-family: $second-font;
+      color: $text-color;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.47;
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-word;
+    }
+    &-author {
+      font-family: $third-font;
+      color: $title-color;
+      position: relative;
+      padding-left: 70px;
+      &::before {
+        content: "";
+        width: 60px;
+        height: 3px;
+        background-color: $primary-color;
+        position: absolute;
+        inset: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  .slick-initialized .slick-slide {
+    display: flex;
+  }
+  .slick-arrow {
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    font-size: 28px;
+    color: $gray-dark-color;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 2;
+    transition: all linear 0.2s;
+    &:hover {
+      color: $title-color;
+    }
+  }
+  .slick {
+    &-next {
+      right: 0;
+    }
+    &-prev {
+      left: 0;
+    }
+  }
+  @media screen and (max-width: 767.98px) {
+    padding: 40px 0;
+
+    &-content {
+      display: block;
+      padding: 0 12px;
+    }
+    &-icon {
+      margin-right: 20px;
+      padding: 20px;
+    }
+    &-image {
+      margin-top: 20px;
+      margin-right: 15px;
+      width: 30%;
+    }
+    &-image ~ &-info {
+      margin-top: 20px;
+    }
+    &-info {
+      font-size: 16px;
+      &-desc {
+        line-height: 1.43;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+      }
+    }
+  }
+}

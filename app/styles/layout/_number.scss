@@ -1,0 +1,48 @@
+.number {
+  background-color: $third-color;
+  &-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-item {
+    width: calc(20%);
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0;
+    border-right: 1px solid $gray-color;
+    text-transform: uppercase;
+    color: white;
+    gap: 25px;
+    &:first-child {
+      border-left: 1px solid #fff;
+    }
+    &-count {
+      font-size: 72px;
+      font-weight: bold;
+    }
+  }
+  @media screen and (max-width: 767.98px) {
+    &-item {
+      padding: 20px 4px;
+      gap: 10px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      white-space: nowrap;
+      overflow: hidden;
+      &-count {
+        font-size: 30px;
+        font-weight: bold;
+      }
+      &-desc {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 5px;
+      }
+    }
+  }
+}

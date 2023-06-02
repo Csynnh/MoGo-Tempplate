@@ -1,0 +1,103 @@
+.story {
+  margin-bottom: 115px;
+  &-list {
+    display: flex;
+    gap: 30px;
+  }
+  &-item {
+    width: calc(33.33% - 20px);
+  }
+  &-image {
+    img {
+      height: 240px;
+      width: 100%;
+      object-fit: cover;
+    }
+    position: relative;
+    margin-bottom: 18px;
+  }
+  &-date {
+    background-color: $third-color;
+    color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    left: -10px;
+    &-number {
+      font-weight: bold;
+      font-size: 30px;
+    }
+    &-text {
+      font-family: $second-font;
+      font-weight: 300;
+      font-size: 15px;
+      font-style: italic;
+    }
+  }
+  &-content {
+    &-heading {
+      font-weight: 600;
+      color: $title-color;
+      margin-bottom: 15px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+    &-desc {
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid $gray-border;
+    }
+    &-text {
+      font-weight: 300;
+      font-size: 15px;
+      color: $text-color;
+      line-height: 1.43;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-word;
+    }
+  }
+  &-meta {
+    display: flex;
+    color: $third-color;
+    gap: 15px;
+    &-icon {
+      margin-right: 5px;
+    }
+    &-count {
+      font-family: $second-font;
+      font-weight: 300;
+      font-size: 15px;
+      font-style: italic;
+      color: $text-color;
+    }
+  }
+  @media screen and (max-width: 767.98px) {
+    &-list {
+      display: block;
+    }
+    &-item {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    &-content {
+      position: relative;
+    }
+    &-meta {
+      position: absolute;
+      bottom: 0;
+      left: 10px;
+      transform: translateY(50%);
+      background-color: #fff;
+      padding: 0 10px;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.device {
+  background: linear-gradient(to bottom, rgba(white, 0.7), rgba(white, 0.5)),
+    url("../../images/img-device-bg.png") no-repeat center / cover;
+  &-image {
+    text-align: center;
+  }
+  &-img {
+    margin-top: -83px;
+    display: inline-block;
+    transform: translateY(93px);
+  }
+  @media screen and (max-width: 767.98px) {
+    &-img {
+      max-width: 80%;
+      transform: translateY(43px);
+    }
+  }
+}

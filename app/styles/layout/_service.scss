@@ -1,0 +1,55 @@
+.service {
+  margin-bottom: 70px;
+  &-list {
+    &:first-of-type {
+      border-bottom: 1px solid $gray;
+    }
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(70px - 25px);
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+  }
+  &-item {
+    display: flex;
+    align-items: flex-start;
+
+    &-icon {
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+    &-content {
+      max-width: 275px;
+      &-caption {
+        margin-bottom: 15px;
+        font-weight: bold;
+        color: $title-color;
+      }
+      &-title {
+        font-family: $second-font;
+        font-size: 15px;
+        color: $text-color;
+        line-height: 1.2;
+      }
+    }
+  }
+  @media screen and (max-width: 767.98px) {
+    &-list {
+      display: block;
+      margin-bottom: 45px;
+      padding-bottom: 15px;
+    }
+    &-item {
+      margin-bottom: 25px;
+      &-content {
+        &-caption {
+          margin-bottom: 10px;
+        }
+        &-title {
+          font-size: 14px;
+          line-height: 1.3;
+        }
+      }
+    }
+  }
+}
