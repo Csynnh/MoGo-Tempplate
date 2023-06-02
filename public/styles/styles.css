@@ -1314,6 +1314,8 @@ body {
   font-size: 14px;
 }
 .footer-bottom-designer {
+  font-size: 12px;
+  font-weight: 500;
   color: #95e1d3;
 }
 .footer-bottom-designer span {
