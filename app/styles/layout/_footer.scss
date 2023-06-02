@@ -169,6 +169,12 @@
       color: $primary-color;
       font-size: 14px;
     }
+    &-designer {
+      color: $third-color;
+      span {
+        color: $second-color;
+      }
+    }
   }
   @media screen and (max-width: 1023.98px) {
     margin-bottom: 15px;

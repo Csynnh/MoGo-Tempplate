@@ -1313,6 +1313,12 @@ body {
   color: #e98382;
   font-size: 14px;
 }
+.footer-bottom-designer {
+  color: #95e1d3;
+}
+.footer-bottom-designer span {
+  color: #eed789;
+}
 @media screen and (max-width: 1023.98px) {
   .footer {
     margin-bottom: 15px;
