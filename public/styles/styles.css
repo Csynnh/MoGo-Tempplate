@@ -12,12 +12,26 @@ img {
   max-width: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   line-height: 1;
   color: #333333;
   font-size: 14px;
   font-weight: 400;
+}
+body::-webkit-scrollbar {
+  width: 1.2rem;
+}
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px rgba(238, 215, 137, 0.85);
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 0.7rem;
+  background-color: #95e1d3;
 }
 
 .wrapper {
@@ -1318,7 +1332,7 @@ body {
   font-weight: 500;
   color: #95e1d3;
 }
-.footer-bottom-designer span {
+.footer-bottom-designer a {
   color: #eed789;
 }
 @media screen and (max-width: 1023.98px) {
