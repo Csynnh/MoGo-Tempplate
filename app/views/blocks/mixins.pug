@@ -29,9 +29,10 @@ mixin blockWedo(icon = "./images/img-wedo-icon1.png", title = "Photography", tex
         .wedo-item-header 
             img(src= icon, alt="wedo-icon").wedo-item-icon
             h3.wedo-item-title= title 
-            i.fal.fa-angle-down.wedo-item-arrow
+            i.fal.fa-angle-down.wedo-item-toggle-arrow
         .wedo-item-content
-            .wedo-item-text= text
+            .wedo-item-content-wrapper
+                .wedo-item-text= text
                
 mixin blockTeam(image = "./images/img-team1.png", author=  "Matthew Dix", position = "Graphic design")
     .team-item

@@ -1,88 +1,94 @@
 .wedo {
-  margin-bottom: 30px;
-  &-wrapper {
-    margin-top: -10px;
-    display: flex;
-    gap: 30px;
-    & > * {
-      width: calc(50% - 15px);
-    }
-  }
-  &-image {
-    object-fit: cover;
-  }
-  &-item {
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
-    border: 1px solid $gray;
-    &-header {
+   margin-bottom: 30px;
+   &-wrapper {
+      margin-top: -10px;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 20px 15px 15px;
-      border-bottom: 1px solid $gray;
-    }
-    &-icon {
-      margin-right: 15px;
-    }
-    &-title {
-      font-weight: bold;
-      text-transform: uppercase;
-      white-space: nowrap;
-      max-width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      padding-right: 5px;
-    }
-    &-arrow {
-      margin-left: auto;
-      font-size: 32px;
-      color: $gray-dark-color;
-      cursor: pointer;
-    }
-    &-content {
-      display: none;
-      visibility: hidden;
-      padding: 20px 20px 25px;
-      color: $text-color;
-      font-size: 15px;
-      font-family: $second-font;
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.47;
-    }
-    &-text {
-      max-height: 130px;
-      overflow-y: scroll;
-      padding-right: 20px;
-      &::-webkit-scrollbar {
-        width: 5px;
-      }
-      &::-webkit-scrollbar-track {
-        background-color: $gray-light-color;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: $third-color;
-        border-radius: 50px;
-      }
-    }
-    &.isShowed {
-      .wedo-item-content {
-        display: inline-block;
-        visibility: visible;
-      }
-    }
-  }
-  @media screen and (max-width: 767.98px) {
-    &-wrapper {
-      display: block;
+      gap: 30px;
       & > * {
-        width: 100%;
+         width: calc(50% - 15px);
       }
-    }
-    &-image {
-      margin-bottom: 20px;
-    }
-  }
+   }
+   &-image {
+      object-fit: cover;
+   }
+   &-item {
+      &:not(:last-child) {
+         margin-bottom: 10px;
+      }
+      border: 1px solid $gray;
+      &-header {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: 15px 20px 15px 15px;
+         border-bottom: 1px solid $gray;
+      }
+      &-icon {
+         margin-right: 15px;
+      }
+      &-title {
+         font-weight: bold;
+         text-transform: uppercase;
+         white-space: nowrap;
+         max-width: 100%;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         padding-right: 5px;
+      }
+      &-toggle-arrow {
+         margin-left: auto;
+         font-size: 32px;
+         color: $gray-dark-color;
+         cursor: pointer;
+         transition: all linear 0.15s;
+         &:hover {
+            color: black;
+         }
+      }
+      &-content {
+         color: $text-color;
+         font-size: 15px;
+         font-family: $second-font;
+         font-weight: 300;
+         font-style: italic;
+         line-height: 1.47;
+         transition: all ease 0.45s;
+         height: 0;
+         overflow: hidden;
+         &-wrapper {
+            padding: 20px 20px 25px;
+         }
+      }
+      &-text {
+         max-height: 130px;
+         overflow-y: scroll;
+         padding-right: 20px;
+         &::-webkit-scrollbar {
+            width: 5px;
+         }
+         &::-webkit-scrollbar-track {
+            background-color: $gray-light-color;
+         }
+         &::-webkit-scrollbar-thumb {
+            background-color: $third-color;
+            border-radius: 50px;
+         }
+      }
+      &.isShowed {
+         .wedo-item-content {
+            height: auto;
+         }
+      }
+   }
+   @media screen and (max-width: 767.98px) {
+      &-wrapper {
+         display: block;
+         & > * {
+            width: 100%;
+         }
+      }
+      &-image {
+         margin-bottom: 20px;
+      }
+   }
 }

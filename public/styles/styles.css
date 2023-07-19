@@ -570,22 +570,29 @@ body::-webkit-scrollbar-thumb {
   text-overflow: ellipsis;
   padding-right: 5px;
 }
-.wedo-item-arrow {
+.wedo-item-toggle-arrow {
   margin-left: auto;
   font-size: 32px;
   color: #cccccc;
   cursor: pointer;
+  transition: all linear 0.15s;
+}
+.wedo-item-toggle-arrow:hover {
+  color: black;
 }
 .wedo-item-content {
-  display: none;
-  visibility: hidden;
-  padding: 20px 20px 25px;
   color: #999999;
   font-size: 15px;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-style: italic;
   line-height: 1.47;
+  transition: all ease 0.45s;
+  height: 0;
+  overflow: hidden;
+}
+.wedo-item-content-wrapper {
+  padding: 20px 20px 25px;
 }
 .wedo-item-text {
   max-height: 130px;
@@ -603,8 +610,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 50px;
 }
 .wedo-item.isShowed .wedo-item-content {
-  display: inline-block;
-  visibility: visible;
+  height: auto;
 }
 @media screen and (max-width: 767.98px) {
   .wedo-wrapper {

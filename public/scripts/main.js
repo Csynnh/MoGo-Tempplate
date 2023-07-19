@@ -41,3 +41,30 @@ $(document).ready(function () {
     }]
   });
 });
+
+// service
+const services = document.querySelectorAll(".wedo-item");
+const iconArrow = document.querySelectorAll(".wedo-item-toggle-arrow");
+const toggleIcon = function () {
+  services.forEach(item => {
+    if (item.classList.contains("isShowed")) {
+      item.firstElementChild.lastElementChild.classList.remove("fa-angle-down");
+      item.firstElementChild.lastElementChild.classList.add("fa-angle-up");
+    } else if (!item.classList.contains("isShowed")) {
+      item.firstElementChild.lastElementChild.classList.add("fa-angle-down");
+      item.firstElementChild.lastElementChild.classList.remove("fa-angle-up");
+      item.lastElementChild.style.height = "0px";
+    }
+  });
+};
+toggleIcon();
+iconArrow.forEach(item => {
+  item.addEventListener("click", e => {
+    const serviceitem = e.target.parentNode.parentNode;
+    const serviceContent = e.target.parentNode.nextElementSibling;
+    services.forEach(item => item.classList.remove("isShowed"));
+    serviceContent.style.height = `${serviceContent.scrollHeight}px`;
+    serviceitem.classList.toggle("isShowed");
+    toggleIcon();
+  });
+});
