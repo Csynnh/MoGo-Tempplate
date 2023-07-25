@@ -80,3 +80,41 @@ iconArrow.forEach((item) => {
       toggleIcon();
    });
 });
+
+// Menu Header
+const headerMenu = document.querySelector(".header-top");
+const paddingHeader = headerMenu.getBoundingClientRect().top;
+const menu = document.querySelector(".header-top-menu");
+const links = document.querySelectorAll(".header-top-menu-item-link");
+const line = document.createElement("div");
+// get Location Default
+const { left, width, height } =
+   menu.firstElementChild.firstElementChild.getBoundingClientRect();
+console.log({ left, width, height });
+let temp = { left, width, height };
+line.className = "line-effect";
+setLocation(line, width, left, height);
+menu.appendChild(line);
+links.forEach((item) => item.addEventListener("mouseenter", handleHoverlink));
+links.forEach((item) =>
+   item.addEventListener("mouseleave", handleLeaveHoverlink)
+);
+links.forEach((item) => item.addEventListener("click", handleClicklink));
+function handleHoverlink(e) {
+   const { left, top, width, height } = e.target.getBoundingClientRect();
+   setLocation(line, width, left, height);
+}
+function handleLeaveHoverlink(e) {
+   setLocation(line, temp.width, temp.left, temp.height);
+}
+
+function handleClicklink(e) {
+   const { left, width, height } = e.target.getBoundingClientRect();
+   setLocation(line, width, left, height);
+   temp = { left, width, height };
+}
+function setLocation(line, width, left, height) {
+   line.style.width = `${width - 50}px`;
+   line.style.left = `${left}px`;
+   line.style.top = `${height + paddingHeader}px`;
+}

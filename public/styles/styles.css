@@ -20,7 +20,7 @@ body {
   font-family: "Montserrat", sans-serif;
   line-height: 1;
   color: #333333;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
 }
 body::-webkit-scrollbar {
@@ -129,22 +129,20 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
 }
 .header-top-menu-item {
   text-transform: uppercase;
 }
 .header-top-menu-item-link {
   color: white;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
   transition: all ease-in 0.25s;
-}
-.header-top-menu-item-link:hover {
-  color: #eed789;
-  border-bottom: 3px solid #eed789;
+  padding-right: 50px;
 }
 .header-top-menu-item-icon {
   color: white;
+  padding-right: 50px;
 }
 .header-content {
   padding-top: 165px;
@@ -322,6 +320,16 @@ body::-webkit-scrollbar-thumb {
   .header-bottom-item-text {
     font-size: 10px;
   }
+}
+
+.line-effect {
+  width: 0px;
+  height: 2px;
+  background-color: #eed789;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: all linear 0.25s;
 }
 
 .about {
